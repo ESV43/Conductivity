@@ -54,13 +54,34 @@
       padding: 20px;
       background-color: #f2f2f2;
     }
+    #background-GIF {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ensure full-screen coverage */
+    z-index: -1; /* Place behind other content */
+    }
+
   </style>
 </head>
 <body>
   <h2>Specific Conductance Calculator</h2>
-  <iframe src="https://giphy.com/embed/GTJFIAnmAdrnsmXcO7" width="480" height="480" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/space-endless-astronomy-GTJFIAnmAdrnsmXcO7">via GIPHY</a></p>
-  
-  <form id="calculate">
+  <img src="https://giphy.com/embed/GTJFIAnmAdrnsmXcO7" alt="background-GIF" id="background-gif">
+  <forbody {
+  background-color: black; /* Optionally set a background color */
+}
+
+#background-video {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Ensure full-screen coverage */
+  z-index: -1; /* Place behind other content */
+}m id="calculate">
     <label for="concentration">Concentration (mg/L):</label>
     <input type="number" step="any" name="concentration" required>
 

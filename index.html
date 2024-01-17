@@ -1,132 +1,112 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Specific Conductance Calculator</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      color:#FFFF00;
-    }
-    
-    h2 {
-      text-align: center;
-    }
-    
-    form {
-      width: 50%;
-      margin: auto;
-      padding: 20px;
-      border: 1px solid #ccc;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-    }
-    
-    label {
-      display: block;
-      margin-bottom: 16px;
-    }
-    
-    input[type="text"] {
-      width: 100%;
-      padding: 12px;
-      border: 1px solid #ccc;
-      border-radius: 4px;
-      box-sizing: border-box;
-      margin-top: 6px;
-      margin-bottom: 16px;
-    }
-    
-    button[type="submit"] {
-      background-color: #4CAF50;
-      color: white;
-      padding: 12px 20px;
-      border: none;
-      border-radius: 4px;
-      cursor: pointer;
-    }
-    
-    button[type="submit"]:hover {
-      background-color: #45a049;
-    }
-    
-    .container {
-      max-width: 700px;
-      margin: auto;
-      overflow: hidden;
-      padding: 20px;
-      background-color: #f2f2f2;
-    }
-    body { background-image:url('tenor.gif'); background-repeat:repeat; }
-    #background-GIF {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover; /* Ensure full-screen coverage */
-    z-index: -1; /* Place behind other content */
-    }
-
-  </style>
-</head>
-<body>
-  <h2>Specific Conductance Calculator</h2>
-  <img src="/main/tenor.gif" alt="background-GIF" id="background-gif">
-  <forbody {
-  background-color: black; /* Optionally set a background color */
+<title>Specific Conductance Calculator</title>
+<style>
+body {
+  font-family: Arial, sans-serif;
+  color: #FFFF00;
 }
 
-#background-GIF {
-  position: fixed;
-  top: 0;
-  left: 0;
+/* Removed duplicate background styling */
+
+h2 {
+  text-align: center;
+}
+
+form {
+  width: 50%;
+  margin: auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+label {
+  display: block;
+  margin-bottom: 16px;
+}
+
+input[type="text"] {
   width: 100%;
-  height: 100%;
-  object-fit: cover; /* Ensure full-screen coverage */
-  z-index: -1; /* Place behind other content */
-}m id="calculate">
-    <label for="concentration">Concentration (mg/L):</label>
-    <input type="number" step="any" name="concentration" required>
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  margin-top: 6px;
+  margin-bottom: 16px;
+}
 
+button[type="submit"] {
+  background-color: #4CAF50;
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
 
-    <label for="recorded_conductance">Recorded Conductance (μS/cm):</label>
-    <input type="number" step="any" name="recorded_conductance" required>
-    
-    <label for="water_conductance">Water Conductance (μS/cm):</label>
-    <input type="number" step="any" name="water_conductance" required>
+button[type="submit"]:hover {
+  background-color: #45a049;
+}
 
-    <button type="submit">Calculate</button>
-  </form>
-  
-  <div class="result"></div>
-  
-  <script>
-    const calculate = document.getElementById('calculate');
-    const resultContainer = document.querySelector('.result');
-    
-    calculate.addEventListener('submit', function(event) {
-      event.preventDefault();
-      
-      // Get the entered values from the form inputs
-      const concentration = parseFloat(document.getElementsByName('concentration')[0].value);
-      const recordedConductance = parseFloat(document.getElementsByName('recorded_conductance')[0].value);
-      const waterConductance = parseFloat(document.getElementsByName('water_conductance')[0].value);
-      
-      if (!isNaN(concentration) && !isNaN(recordedConductance)) {
-        // Perform the calculations
-        const water = waterConductance;
-        const specificConductance = recordedConductance - water;
-        const equivalentConductance = ((specificConductance * 1000) / concentration).toFixed(2);
-        
-        // Display the results
-        resultContainer.innerHTML = `
-          Specific Conductance: ${specificConductance} mS/cm
+.container {
+  max-width: 700px;
+  margin: auto;
+  overflow: hidden;
+  padding: 20px;
+  background-color: #f2f2f2;
+}
 
-          Equivalent Conductance: ${equivalentConductance} μS/cm
-        `;
-      } else {
-        alert('Please enter valid numbers for waterconductance,concentration and recorded conductance.');
-      }
-    });
-  </script>
+/* Removed duplicate background styling */
+</style>
+</head>
+<body>
+<h2>Specific Conductance Calculator</h2>
+<img src="/main/tenor.gif" alt="background-GIF" id="background-gif">
+
+<form id="calculate"> <label for="concentration">Concentration (mg/L):</label>
+  <input type="number" step="any" name="concentration" required>
+
+  <label for="recorded_conductance">Recorded Conductance (μS/cm):</label>
+  <input type="number" step="any" name="recorded_conductance" required>
+
+  <label for="water_conductance">Water Conductance (μS/cm):</label>
+  <input type="number" step="any" name="water_conductance" required>
+
+  <button type="submit">Calculate</button>
+</form>
+
+<div class="result"></div>
+
+<script>
+const calculate = document.getElementById('calculate');
+const resultContainer = document.querySelector('.result');
+
+calculate.addEventListener('submit', function(event) {
+  event.preventDefault();
+
+  // Get the entered values from the form inputs
+  const concentration = parseFloat(document.getElementsByName('concentration')[0].value);
+  const recordedConductance = parseFloat(document.getElementsByName('recorded_conductance')[0].value);
+  const waterConductance = parseFloat(document.getElementsByName('water_conductance')[0].value);
+
+  if (!isNaN(concentration) && !isNaN(recordedConductance) && !isNaN(waterConductance)) { // Added check for waterConductance
+    // Perform the calculations
+    const specificConductance = recordedConductance - waterConductance;
+    const equivalentConductance = ((specificConductance * 1000) / concentration).toFixed(2);
+
+    // Display the results
+    resultContainer.innerHTML = `
+      Specific Conductance: ${specificConductance} mS/cm
+
+      Equivalent Conductance: ${equivalentConductance} μS/cm
+    `;
+  } else {
+    alert('Please enter valid numbers for concentration, recorded conductance, and water conductance.');
+  }
+});
+</script>
 </body>
 </html>
+
